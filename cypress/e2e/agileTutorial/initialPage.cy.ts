@@ -1,18 +1,18 @@
 /// <reference types="cypress" />
-
+import * as pt from '../../fixtures/pt.json'
 import InitialPage from '../../pages/InitialPage'
 
 describe('Agile Tutorial - Initial Page tests', () => {
-  let initalPage: InitialPage
+  let initialPage: InitialPage
 
   beforeEach(() => {
-    cy.visit('/')
-    initalPage = new InitialPage()
+    cy.visit('/cover-11/')
+    initialPage = new InitialPage()
 
   })
 
   it('verify page elements', () => {
-    cy.assertPageTitle('AGILE Tutorial de configuração')
+    cy.assertPageTitle(pt.coverPageTitle)
     cy.get('video').should((el) => {
       expect(el).to.have.attr('playsinline')
       expect(el).to.have.attr('muted')
@@ -22,7 +22,7 @@ describe('Agile Tutorial - Initial Page tests', () => {
   })
 
   it('navigates to Config Steps', () => {
-    initalPage.navigateToConfigSteps()
+    initialPage.navigateToConfigSteps()
   })
 
 })

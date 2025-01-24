@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
-
+import * as pt from '../../fixtures/pt.json'
 import Footer from '../../pages/Footer'
 
 describe('Agile Tutorial - Footer tests', () => {
   let footer: Footer
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/cover-11/')
     footer = new Footer()
-    footer.assertTitle('Página inicial')
+    footer.assertTitle(pt.footer.coverPage)
   })
 
   it('navigates via Menu', () => {
@@ -48,10 +48,10 @@ describe('Agile Tutorial - Footer tests', () => {
   it('assert Share options', () => {
     footer.getShareButton().realHover().click()
     footer.getShareLinkOptions().then((links) => {
-        cy.wrap(links[0]).should('have.attr', 'href').and('contain', 'linkedin')
-        cy.wrap(links[1]).should('have.attr', 'href').and('contain', 'facebook')
-        cy.wrap(links[2]).should('have.attr', 'href').and('contain', 'twitter')
-        cy.wrap(links[3]).should('have.attr', 'href').and('contain', 'mailto')
+        expect(links[0]).to.have.attr('href').and.contain('linkedin')
+        expect(links[1]).to.have.attr('href').and.contain('facebook')
+        expect(links[2]).to.have.attr('href').and.contain('twitter')
+        expect(links[3]).to.have.attr('href').and.contain('mailto')
     })
     footer.getShareCopyOption().should('have.attr', 'data-link')
   })

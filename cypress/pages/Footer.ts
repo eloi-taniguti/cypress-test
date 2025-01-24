@@ -1,3 +1,5 @@
+import * as pt from '../fixtures/pt.json'
+
 class Footer {
 
     getLinkToNextPage() {
@@ -26,7 +28,7 @@ class Footer {
 
     clickLogo() {
         cy.get('.logo').click()
-        this.assertTitle('Página inicial')
+        this.assertTitle(pt.footer.coverPage)
     }
 
     clickMenuButton() {
@@ -44,21 +46,21 @@ class Footer {
     }
 
     navigateToInitialPage(){
-        cy.get('#menu-container').findByText('Página inicial').click()
-        cy.get('#menu-container').findByText('Página inicial').parent().should('have.class', 'active')
-        this.assertTitle('Página inicial')
+        cy.get('#menu-container').findByText(pt.footer.coverPage).click()
+        cy.get('#menu-container').findByText(pt.footer.coverPage).parent().should('have.class', 'active')
+        this.assertTitle(pt.footer.coverPage)
     }
 
     navigateToConfigSteps(){
-        cy.get('#menu-container').findByText('Etapas de configuração').click()
-        cy.get('#menu-container').findByText('Etapas de configuração').parent().should('have.class', 'active')
-        this.assertTitle('Etapas de configuração')
+        cy.get('#menu-container').findByText(pt.footer.configPage).click()
+        cy.get('#menu-container').findByText(pt.footer.configPage).parent().should('have.class', 'active')
+        this.assertTitle(pt.footer.configPage)
     }
 
     navigateToBackCover(){
-        cy.get('#menu-container').findByText('Contracapa').click()
-        cy.get('#menu-container').findByText('Contracapa').parent().should('have.class', 'active')
-        this.assertTitle('Contracapa')
+        cy.get('#menu-container').findByText(pt.footer.backCoverPage).click()
+        cy.get('#menu-container').findByText(pt.footer.backCoverPage).parent().should('have.class', 'active')
+        this.assertTitle(pt.footer.backCoverPage)
     }
 
     assertTitle(title: string) {

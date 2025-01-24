@@ -1,0 +1,25 @@
+{
+    "url": "https://www.tkelevator.br",
+    "urlLabel": "www.TKELEVATOR.BR",
+    "coverPageTitle": "AGILE Tutorial de configuração",
+    "configPageTitle": "Configure a tela do seu terminal AGILE",
+    "buttons": {
+        "config": "Configuração"
+    },
+    "address": {
+        "name": "TK Elevadores S.A. (Headquarters)",
+        "street": "Rua Santa Maria, 1000",
+        "city": "Bairro Columbia City",
+        "state": "Guaíba – Rio Grande do Sul",
+        "country": "Brazil"
+    },
+    "info": {
+        "title": "Tutorial do AGILE, 2023, V1",
+        "msg": "As informações contidas neste folheto somente serão válidas se forem expressamente confirmadas por escrito. Reprodução e armazenamento somente com a permissão da TK Elevator. As cores, opções e especificações estão sujeitas a alterações. Todas as opções de design de cabina ilustradas neste folheto são apenas para fins ilustrativos. As amostras mostradas podem variar do original em termos de cor e material. Os desenhos não estão em escala. Seu contato na TK Elevator terá prazer em fornecer amostras de materiais reais."
+    },
+    "footer": {
+        "coverPage": "Página inicial",
+        "configPage": "Etapas de configuração",
+        "backCoverPage": "Contracapa"
+    }
+}
