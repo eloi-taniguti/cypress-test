@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@testing-library/cypress": "^10.0.3",
     "cypress": "^14.0.0",
+    "cypress-real-events": "^1.14.0",
     "typescript": "^5.7.3"
   }
 }
