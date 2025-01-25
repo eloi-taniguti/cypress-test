@@ -21,5 +21,25 @@
         "coverPage": "Página inicial",
         "configPage": "Etapas de configuração",
         "backCoverPage": "Contracapa"
+    },
+    "configTabs": {
+        "introduction": "Introdução",
+        "initConfig": "Iniciar a configuração",
+        "initConfigDesc": "Este capítulo mostra como fazer login no configurador de terminal e como selecionar as telas que deseja configurar.",
+        "themeDesign": "Design e tema",
+        "themeDesignDesc": "Este capítulo mostra como escolher o tema da tela e como projetá-la corretamente.",
+        "welcomeText": "Texto de boas-vindas",
+        "welcomeTextDesc": "Este capítulo mostra como alterar o texto de boas-vindas na tela.",
+        "logo": "Logotipo corporativo",
+        "logoDesc": "Este capítulo mostra como adicionar um logotipo corporativo ao design da tela.",
+        "background": "Fundo",
+        "backgrountDesc": "Este capítulo mostra como alterar o plano de fundo. Você pode adicionar uma imagem ou escolher uma cor de fundo.",
+        "quickMenu": "Área do menu rápido",
+        "quickMenuDesc": "Este capítulo mostra como reorganizar ou ocultar botões na área de menu rápido na tela.",
+        "terminalConfig": "Configuração do terminal AGILE",
+        "terminalConfigDesc": "Este capítulo mostra como adaptar as configurações técnicas do terminal. Você pode ajustar o brilho da tela, o volume, as configurações do controle de rolagem e muito mais.",
+        "publishConfig": "Publicar a configuração do terminal",
+        "publishConfigDesc": "Este capítulo mostra como publicar suas alterações no terminal configurado.",
+        "videoFootNote": "Para obter mais informações, consulte o manual do usuário do AGILE."
     }
 }

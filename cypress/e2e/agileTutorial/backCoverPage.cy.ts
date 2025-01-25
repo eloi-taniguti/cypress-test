@@ -2,7 +2,7 @@
 import * as pt from '../../fixtures/pt.json'
 import BackCoverPage from '../../pages/BackCoverPage'
 
-describe('Agile Tutorial - Initial Page tests', () => {
+describe('Agile Tutorial - Back Cover Page tests', () => {
   let backCoverPage: BackCoverPage
 
   beforeEach(() => {
