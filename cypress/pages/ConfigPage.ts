@@ -23,6 +23,10 @@ class ConfigPage {
         return cy.get('.tabs-content').find('.text-in')
     }
 
+    assertContentIsHidden(index: number) {
+        cy.get('.tabs-buttons').find('.tab-text').eq(index).should('not.be.visible')
+        cy.get('.tabs-content').find('.tab-text').eq(index).should('not.be.visible')
+    }
 }
 
 export default ConfigPage

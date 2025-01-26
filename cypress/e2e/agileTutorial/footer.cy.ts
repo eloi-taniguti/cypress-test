@@ -11,37 +11,43 @@ describe('Agile Tutorial - Footer tests', () => {
   })
 
   it('navigates via Menu', () => {
+    // open menu
     footer.clickMenuButton()
-    footer.navigateToConfigSteps()
+    // go to Init Config page
+    footer.navigateToStep(pt.footer.configPage)
 
     footer.clickMenuButton()
-    footer.navigateToBackCover()
+    footer.navigateToStep(pt.footer.backCoverPage)
 
     footer.clickMenuButton()
-    footer.navigateToInitialPage()
+    footer.navigateToStep(pt.footer.coverPage)
   })
 
   it('click on logo navigates to initial page', () => {
     footer.clickMenuButton()
-    footer.navigateToConfigSteps()
-
+    footer.navigateToStep(pt.footer.configPage)
+    // click on Logo to go back to cover page
     footer.clickLogo()
 
     footer.clickMenuButton()
-    footer.navigateToBackCover()
+    footer.navigateToStep(pt.footer.backCoverPage)
 
     footer.clickLogo()
   })
 
   it('navigates via Previous and Next buttons', () => {
     footer.getNavBar().realHover()
-    footer.clickLinkToNextPage('Etapas de configuração')
-
-    footer.clickLinkToNextPage('Contracapa')
+    // click on Next button with Config page label
+    footer.clickLinkToNextPage(pt.footer.configPage)
+    // click on Next button with back cover page label
+    footer.clickLinkToNextPage(pt.footer.backCoverPage)
+    // back cover page should not have Next button
     footer.getLinkToNextPage().should('not.exist')
-    footer.clickLinkToPreviousPage('Etapas de configuração')
-
-    footer.clickLinkToPreviousPage('Página inicial')
+    // click on Previous button with Config page label
+    footer.clickLinkToPreviousPage(pt.footer.configPage)
+    // click on Previous button with Cover page label
+    footer.clickLinkToPreviousPage(pt.footer.coverPage)
+    // cover page should not have Previous button
     footer.getLinkToPreviousPage().should('not.exist')
   })
 

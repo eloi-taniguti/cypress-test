@@ -1,7 +1,7 @@
 import * as pt from '../fixtures/pt.json'
 
 class InitialPage {
-    navigateToConfigSteps(){
+    navigateToConfigPage(){
         cy.get('.button').findByText(pt.buttons.config).click()
         cy.assertPageTitle(pt.configPageTitle)
     }

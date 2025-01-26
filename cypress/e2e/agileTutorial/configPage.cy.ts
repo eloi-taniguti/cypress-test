@@ -21,10 +21,10 @@ describe('Agile Tutorial - Config Page tests', () => {
   beforeEach(() => {
     cy.visit('/configuration-steps-2/')
     configPage = new ConfigPage()
+    cy.assertPageTitle(pt.configPageTitle)
   })
 
   it('verify tab titles', () => {
-    cy.assertPageTitle(pt.configPageTitle)
     configPage.getAllTabs().then((titles) => {
        expect(titles[ListOfTabs.INTRO].innerText).to.equal(pt.configTabs.introduction)
        expect(replaceWhiteSpace(titles[ListOfTabs.START].innerText)).to.equal(pt.configTabs.initConfig)
@@ -39,7 +39,6 @@ describe('Agile Tutorial - Config Page tests', () => {
   })
 
   it('verify tab descriptions', () => {
-    cy.assertPageTitle(pt.configPageTitle)
     configPage.getAllDesc().then((desc) => {
         // there is no description for Introduction, which is why we are doing index - 1
         expect(replaceWhiteSpace(desc[ListOfTabs.START - 1].innerText.trim())).to.equal(pt.configTabs.initConfigDesc)
@@ -88,8 +87,8 @@ describe('Agile Tutorial - Config Page tests', () => {
         // verify all other tab content are hidden
         for (let i = 0; i < tabsArray.length; i++) {
             if (i != tab) {
-                cy.get('.tabs-buttons').find('.tab-text').eq(i).should('not.be.visible')
-                cy.get('.tabs-content').find('.tab-text').eq(i).should('not.be.visible')
+                // verify other tabs and video are set to display: none
+                configPage.assertContentIsHidden(i)
             }    
         }    
     }

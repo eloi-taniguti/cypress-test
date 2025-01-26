@@ -35,32 +35,20 @@ class Footer {
         cy.get('#menu-btn').findByText('Menu').click()
     }
 
-    clickLinkToNextPage(page: 'Etapas de configuração' | 'Contracapa') {
+    clickLinkToNextPage(page: string) {
         this.getLinkToNextPage().should('contain.text', page).click()
         this.assertTitle(page)
     }
 
-    clickLinkToPreviousPage(page: 'Etapas de configuração' | 'Página inicial') {
+    clickLinkToPreviousPage(page: string) {
         this.getLinkToPreviousPage().should('contain.text', page).click()
         this.assertTitle(page)
     }
 
-    navigateToInitialPage(){
-        cy.get('#menu-container').findByText(pt.footer.coverPage).click()
-        cy.get('#menu-container').findByText(pt.footer.coverPage).parent().should('have.class', 'active')
-        this.assertTitle(pt.footer.coverPage)
-    }
-
-    navigateToConfigSteps(){
-        cy.get('#menu-container').findByText(pt.footer.configPage).click()
-        cy.get('#menu-container').findByText(pt.footer.configPage).parent().should('have.class', 'active')
-        this.assertTitle(pt.footer.configPage)
-    }
-
-    navigateToBackCover(){
-        cy.get('#menu-container').findByText(pt.footer.backCoverPage).click()
-        cy.get('#menu-container').findByText(pt.footer.backCoverPage).parent().should('have.class', 'active')
-        this.assertTitle(pt.footer.backCoverPage)
+    navigateToStep(step: string){
+        cy.get('#menu-container').findByText(step).click()
+        cy.get('#menu-container').findByText(step).parent().should('have.class', 'active')
+        this.assertTitle(step)
     }
 
     assertTitle(title: string) {

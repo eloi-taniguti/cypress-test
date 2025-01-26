@@ -13,6 +13,7 @@ describe('Agile Tutorial - Initial Page tests', () => {
 
   it('verify page elements', () => {
     cy.assertPageTitle(pt.coverPageTitle)
+    // verify video attributes
     cy.get('video').should((el) => {
       expect(el).to.have.attr('playsinline')
       expect(el).to.have.attr('muted')
@@ -21,8 +22,8 @@ describe('Agile Tutorial - Initial Page tests', () => {
     })
   })
 
-  it('navigates to Config Steps', () => {
-    initialPage.navigateToConfigSteps()
+  it('navigates to Config page', () => {
+    initialPage.navigateToConfigPage()
   })
 
 })
