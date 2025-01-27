@@ -1,8 +1,7 @@
 /**
- * This function will replace any $nbsp; from the string.
+ * This function will trim and replace any $nbsp; from the string.
  * @param text - string with text to be updated.
 */
-
-export const replaceWhiteSpace = (text: string) => {
-    return text.replace(/\u00a0/g, ' ')
+export const getTextContent = (el: HTMLElement) => {
+    return el.innerText.trim().replace(/\u00a0/g, ' ')
 }

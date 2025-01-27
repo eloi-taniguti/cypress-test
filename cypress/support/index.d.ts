@@ -6,4 +6,4 @@ declare namespace Cypress {
        */
       assertPageTitle(title: string): Chainable<Element>
       }
-  }
+}

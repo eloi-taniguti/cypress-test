@@ -8,12 +8,12 @@ describe('Agile Tutorial - Initial Page tests', () => {
   beforeEach(() => {
     cy.visit('/cover-11/')
     initialPage = new InitialPage()
-
   })
 
   it('verify page elements', () => {
+    // verify page has the correct title
     cy.assertPageTitle(pt.coverPageTitle)
-    // verify video attributes
+    // verify video player attributes
     cy.get('video').should((el) => {
       expect(el).to.have.attr('playsinline')
       expect(el).to.have.attr('muted')
@@ -23,6 +23,7 @@ describe('Agile Tutorial - Initial Page tests', () => {
   })
 
   it('navigates to Config page', () => {
+    // verify user can go to Config page
     initialPage.navigateToConfigPage()
   })
 

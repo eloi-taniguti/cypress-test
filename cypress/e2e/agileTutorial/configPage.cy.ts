@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import * as pt from '../../fixtures/pt.json'
 import ConfigPage from '../../pages/ConfigPage'
-import { replaceWhiteSpace } from '../../support/utils'
+import { getTextContent } from '../../support/utils'
 
 enum ListOfTabs {
     INTRO,
@@ -21,34 +21,35 @@ describe('Agile Tutorial - Config Page tests', () => {
   beforeEach(() => {
     cy.visit('/configuration-steps-2/')
     configPage = new ConfigPage()
+    // verify page has the correct title
     cy.assertPageTitle(pt.configPageTitle)
   })
 
   it('verify tab titles', () => {
     configPage.getAllTabs().then((titles) => {
-       expect(titles[ListOfTabs.INTRO].innerText).to.equal(pt.configTabs.introduction)
-       expect(replaceWhiteSpace(titles[ListOfTabs.START].innerText)).to.equal(pt.configTabs.initConfig)
-       expect(replaceWhiteSpace(titles[ListOfTabs.THEME].innerText)).to.equal(pt.configTabs.themeDesign)
-       expect(titles[ListOfTabs.WELCOME].innerText).to.equal(pt.configTabs.welcomeText)
-       expect(titles[ListOfTabs.LOGO].innerText).to.equal(pt.configTabs.logo)
-       expect(titles[ListOfTabs.BACKGROUND].innerText).to.equal(pt.configTabs.background)
-       expect(titles[ListOfTabs.QUICKMENU].innerText).to.equal(pt.configTabs.quickMenu)
-       expect(titles[ListOfTabs.TERMINAL].innerText).to.equal(pt.configTabs.terminalConfig)
-       expect(replaceWhiteSpace(titles[ListOfTabs.PUBLISH].innerText)).to.equal(pt.configTabs.publishConfig)
+       expect(getTextContent(titles[ListOfTabs.INTRO])).to.equal(pt.configTabs.introduction)
+       expect(getTextContent(titles[ListOfTabs.START])).to.equal(pt.configTabs.initConfig)
+       expect(getTextContent(titles[ListOfTabs.THEME])).to.equal(pt.configTabs.themeDesign)
+       expect(getTextContent(titles[ListOfTabs.WELCOME])).to.equal(pt.configTabs.welcomeText)
+       expect(getTextContent(titles[ListOfTabs.LOGO])).to.equal(pt.configTabs.logo)
+       expect(getTextContent(titles[ListOfTabs.BACKGROUND])).to.equal(pt.configTabs.background)
+       expect(getTextContent(titles[ListOfTabs.QUICKMENU])).to.equal(pt.configTabs.quickMenu)
+       expect(getTextContent(titles[ListOfTabs.TERMINAL])).to.equal(pt.configTabs.terminalConfig)
+       expect(getTextContent(titles[ListOfTabs.PUBLISH])).to.equal(pt.configTabs.publishConfig)
     })
   })
 
   it('verify tab descriptions', () => {
     configPage.getAllDesc().then((desc) => {
         // there is no description for Introduction, which is why we are doing index - 1
-        expect(replaceWhiteSpace(desc[ListOfTabs.START - 1].innerText.trim())).to.equal(pt.configTabs.initConfigDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.THEME - 1].innerText.trim())).to.equal(pt.configTabs.themeDesignDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.WELCOME - 1].innerText.trim())).to.equal(pt.configTabs.welcomeTextDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.LOGO - 1].innerText.trim())).to.equal(pt.configTabs.logoDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.BACKGROUND - 1].innerText.trim())).to.equal(pt.configTabs.backgrountDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.QUICKMENU - 1].innerText.trim())).to.equal(pt.configTabs.quickMenuDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.TERMINAL - 1].innerText.trim())).to.equal(pt.configTabs.terminalConfigDesc)
-        expect(replaceWhiteSpace(desc[ListOfTabs.PUBLISH - 1].innerText.trim())).to.equal(pt.configTabs.publishConfigDesc)
+        expect(getTextContent(desc[ListOfTabs.START - 1])).to.equal(pt.configTabs.initConfigDesc)
+        expect(getTextContent(desc[ListOfTabs.THEME - 1])).to.equal(pt.configTabs.themeDesignDesc)
+        expect(getTextContent(desc[ListOfTabs.WELCOME - 1])).to.equal(pt.configTabs.welcomeTextDesc)
+        expect(getTextContent(desc[ListOfTabs.LOGO - 1])).to.equal(pt.configTabs.logoDesc)
+        expect(getTextContent(desc[ListOfTabs.BACKGROUND - 1])).to.equal(pt.configTabs.backgrountDesc)
+        expect(getTextContent(desc[ListOfTabs.QUICKMENU - 1])).to.equal(pt.configTabs.quickMenuDesc)
+        expect(getTextContent(desc[ListOfTabs.TERMINAL - 1])).to.equal(pt.configTabs.terminalConfigDesc)
+        expect(getTextContent(desc[ListOfTabs.PUBLISH - 1])).to.equal(pt.configTabs.publishConfigDesc)
     })
   })
 
@@ -72,7 +73,7 @@ describe('Agile Tutorial - Config Page tests', () => {
         // there is no note for Introduction video, which is why we are length - 1
         for (let i = 0; i < tabsArray.length -1; i++) {
             // All video notes have the same text
-            expect(replaceWhiteSpace(notes[i].innerText.trim())).to.equal(pt.configTabs.videoFootNote)
+            expect(getTextContent(notes[i])).to.equal(pt.configTabs.videoFootNote)
         }
     })
   })
@@ -80,13 +81,12 @@ describe('Agile Tutorial - Config Page tests', () => {
   it('verify selected tab is active', () => {
     const tabsArray = Object.values(ListOfTabs).filter((value) => typeof value === "string")
     // select each tab one by one
-    for (let tab = 0; tab < tabsArray.length; tab++) {
-        configPage.getTabButton(tab).click().and('have.class', 'active')
-        configPage.getAllVideoContent(tab).should('have.class', 'active')
-
+    for (let tabIndex = 0; tabIndex < tabsArray.length; tabIndex++) {
+        configPage.getTabButton(tabIndex).click().and('have.class', 'active')
+        configPage.getAllVideoContent(tabIndex).should('have.class', 'active')
         // verify all other tab content are hidden
         for (let i = 0; i < tabsArray.length; i++) {
-            if (i != tab) {
+            if (i != tabIndex) {
                 // verify other tabs and video are set to display: none
                 configPage.assertContentIsHidden(i)
             }    
